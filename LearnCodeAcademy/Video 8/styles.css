@@ -9,8 +9,9 @@ body {
 header {
     background: black;
     background-image: url("images/hero.jpg");
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
+    background-position: center;
     height: 400px;
     padding: 20px;
     text-align: center;
@@ -46,7 +47,7 @@ li {
     margin-right: 20px;
 }
 
-section {
+.features {
     background: white;
     color: gray;
     padding: 20px;
@@ -54,11 +55,19 @@ section {
     flex-direction: row;
 }
 
-div {
-    background: blue;
+.features figure {
     margin: auto;
-    width: 100px;
-    padding: 20px;
+    width: 200px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.features figure img {
+    width: 200px;
+    border-radius: 50px;
+    size: 100px;
+    box-shadow: gray 0px 0px 10px;
+    border: 1px solid white;
 }
 
 footer {
