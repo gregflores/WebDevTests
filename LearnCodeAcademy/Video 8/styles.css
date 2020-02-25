@@ -6,6 +6,8 @@ body {
     padding: 0px;
 }
 
+/* Header */
+
 header {
     background: black;
     background-image: url("images/hero.jpg");
@@ -24,6 +26,10 @@ header a{
     margin-top: 40px;
 }
 
+header .mobile {
+    display: none;
+}
+
 header .logo a {
     background-image: url("images/logo.png");
     background-size: 300px;
@@ -36,16 +42,28 @@ header .logo a {
     top: -30px;
 }
 
-ul {
+nav ul {
     padding: 0px;
     margin: 0px;
     list-style-type: none;
 }
 
-li {
+nav li {
     display: inline-block;
     margin-right: 20px;
 }
+
+/* Responsive Rulkes */
+@media screen and (max-width: 720px) {
+    header .mobile {
+        display: inline-block;
+    }
+    header .desktop {
+        display: none;
+    }
+}
+
+/* Features */
 
 .features {
     background: white;
@@ -53,25 +71,35 @@ li {
     padding: 20px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .features figure {
     margin: auto;
-    width: 200px;
+    padding: 10px;
     text-align: center;
     text-transform: uppercase;
+    width: 200px;
 }
 
 .features figure img {
     width: 200px;
-    border-radius: 50px;
-    size: 100px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 30%;
     box-shadow: gray 0px 0px 10px;
     border: 1px solid white;
 }
 
-footer {
-    background: black;
-    padding: 10px 20px;
+/* Responsive Rules */
+
+@media screen and (max-width: 720px) {
 }
 
+footer {
+    background: black;
+    color: gray;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 20px;
+}
