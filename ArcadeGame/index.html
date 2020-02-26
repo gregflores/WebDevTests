@@ -1,41 +1,71 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        Some text here
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <script>
-            var canvas;
-            var canvasContext;
-            var boxHeight = 200;
-            var boxWidth = 200;
-            window.onload = function() {
-                canvas = document.getElementById("gameCanvas");
-                canvasContext = canvas.getContext("2d");
-                drawEverything();
-                drawEverything();
-                drawEverything();
-            };
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pong</title>
+	</head>
+	<body>
+		Some text here
+		<canvas
+			id="gameCanvas"
+			width="700"
+			height="300"
+			style="border: 10px solid #ff0000;"
+		></canvas>
+		<script>
+			var canvas;
+			var canvasContext;
+			var boxHeight = 200;
+			var boxWidth = 200;
+			var ballX = 50;
+			var ballY = 50;
+			var ballSpeedX = 5;
+			var ballSpeedY = 5;
+			window.onload = function() {
+				canvas = document.getElementById('gameCanvas');
+				canvasContext = canvas.getContext('2d');
+				var framesPerSecond = 120;
+				setInterval(function() {
+					moveEverything();
+					drawEverything();
+				}, 1000 / framesPerSecond);
+			};
 
-            function drawEverything() {
-                console.log("drawEverything()");
-                canvasContext.fillStyle = "black";
-                canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-                canvasContext.fillStyle = "red";
-                canvasContext.fillRect(200, 200, 50, 25);
-                canvasContext.fillStyle = "white";
-                canvasContext.fillRect(
-                    canvas.width / 2 - boxWidth / 2,
-                    canvas.height / 2 - boxHeight / 2,
-                    boxHeight,
-                    boxWidth
-                );
-            }
-        </script>
-    </body>
+			function drawEverything() {
+				// Draw Background
+				colorRect(0, 0, canvas.width, canvas.height, 'black');
+
+				// Draw Ball
+				colorRect(ballX, ballY, 10, 10, 'red');
+
+				// Draw Paddle
+				colorRect(0, 105, 10, 10, 'white');
+			}
+
+			function colorRect(leftX, topY, width, height, drawColor) {
+				// Draw Rectangle with color at position with height
+				canvasContext.fillStyle = drawColor;
+				canvasContext.fillRect(leftX, topY, width, height);
+			}
+			function moveEverything() {
+				ballX += ballSpeedX;
+				ballY += ballSpeedY;
+				console.log(ballX + ' ' + ballY);
+				if (ballX > canvas.width) {
+					ballSpeedX = -ballSpeedX;
+				}
+				if (ballY > canvas.height) {
+					ballSpeedY = -ballSpeedY;
+				}
+				if (ballX < 0) {
+					ballSpeedX = -ballSpeedX;
+				}
+				if (ballY < 0) {
+					ballSpeedY = -ballSpeedY;
+				}
+			}
+		</script>
+	</body>
 </html>
